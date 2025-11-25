@@ -6,7 +6,7 @@ export const DEFAULT_APP_SETTINGS = {
   autoWidth: "FALSE",
   width: "50",
   fontSize: "20",
-  fontColor: "#ffff",
+  fontColor: "#ffffffff",
   xposition: "CENTER",
   yposition: "CENTER",
   opacity: "1.0",

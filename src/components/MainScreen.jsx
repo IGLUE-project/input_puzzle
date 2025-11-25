@@ -62,22 +62,21 @@ export default function MainScreen({ config, sendInput, result }) {
     }
   }, [config]);
 
-
   let solved = false;
   let resultMessageExtraClass = "";
   let messageToShow = undefined;
-  if(result){
-    if(typeof result.success === "boolean"){
-      if((typeof result.message === "string")&&(result.message.trim()!=="")){
+  if (result) {
+    if (typeof result.success === "boolean") {
+      if (typeof result.message === "string" && result.message.trim() !== "") {
         messageToShow = result.message;
       } else {
-        if(result.success === true){
+        if (result.success === true) {
           messageToShow = I18n.getTrans("i.successMessage");
         } else {
           messageToShow = I18n.getTrans("i.errorMessage");
         }
       }
-      if(result.success === true){
+      if (result.success === true) {
         solved = true;
         resultMessageExtraClass = "successMessage";
       } else {
@@ -85,13 +84,12 @@ export default function MainScreen({ config, sendInput, result }) {
       }
     }
   }
-
   return (
     <div
       id="MainScreen"
       className="screen_wrapper"
       style={{
-        color: config.fontColorProperty,
+        color: config.fontColor,
         justifyContent: xposition,
         alignItems: yposition,
         opacity: config.opacity,
@@ -108,6 +106,7 @@ export default function MainScreen({ config, sendInput, result }) {
           className="info"
           style={{
             fontSize: config.fontSizeNumber,
+            color: config.fontColor,
           }}
         >
           {config.message}
@@ -120,13 +119,18 @@ export default function MainScreen({ config, sendInput, result }) {
             type="text"
             onKeyDown={handleKeyDown}
             style={{
+              color: config.fontColor,
               fontSize: config.fontSizeNumber,
               width: config.autoWidthBoolean ? "auto" : `100%`,
             }}
             disabled={solved}
             placeholder={solved ? "" : config.placeholder}
           />
-          <button onClick={handleSend} style={{ fontSize: config.fontSizeNumber }} disabled={solved}>
+          <button
+            onClick={handleSend}
+            style={{ color: config.fontColor, fontSize: config.fontSizeNumber }}
+            disabled={solved}
+          >
             {I18n.getTrans("i.send")}
           </button>
         </div>
