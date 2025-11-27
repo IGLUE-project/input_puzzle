@@ -16,7 +16,7 @@ export let ESCAPP_APP_SETTINGS = {
   //xposition: "RIGHT", //This value can be "LEFT", "CENTER" or "RIGHT"
   //yposition: "BOTTOM", //This value can be "TOP", "CENTER" or "BOTTOM"
   //opacity: "100", // from 0 to 100
-  //delay: "3000",
+  //delay: "3", //in seconds
 
   //Settings that will be automatically specified by the Escapp server
   locale: "es",

@@ -92,8 +92,9 @@ export default function App() {
     if (typeof _appSettings.delay === "number") {
       _appSettings.delayNumber = _appSettings.delay;
     } else {
-      _appSettings.delayNumber = parseInt(_appSettings.delay);
+      _appSettings.delayNumber = parseFloat(_appSettings.delay);
     }
+    _appSettings.delayNumber = 1000*_appSettings.delayNumber; //Convert delay to ms
 
     if (typeof _appSettings.opacity === "number") {
       _appSettings.opacityNumber = _appSettings.opacity;

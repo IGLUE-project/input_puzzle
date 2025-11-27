@@ -15,7 +15,7 @@ export const DEFAULT_APP_SETTINGS = {
   xposition: "CENTER",
   yposition: "CENTER",
   opacity: "100",
-  delay: "2000",
+  delay: "2",
 };
 
 export const XPOSITION = {
