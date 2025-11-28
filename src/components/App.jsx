@@ -135,7 +135,7 @@ export default function App() {
       _appSettings.buttonLabel = I18n.getTrans("i.send");
     }
 
-    if (typeof _appSettings.backgroundImg === "string" && _appSettings.backgroundImg.trim() !== "") {
+    if (typeof _appSettings.backgroundImg === "string" && _appSettings.backgroundImg.trim() !== "" && _appSettings.backgroundImg !== "NONE") {
       _appSettings.background = "url(" + _appSettings.backgroundImg + ") no-repeat";
       _appSettings.backgroundSize = "100% 100%";
     }
