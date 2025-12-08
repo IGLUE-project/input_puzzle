@@ -83,6 +83,12 @@ export default function App() {
       _appSettings.skin = DEFAULT_APP_SETTINGS.skin;
     }
 
+    if (typeof _appSettings.backgroundColorPanel != "undefined"){
+      if (typeof _appSettings.backgroundColorPanel != "string" || _appSettings.backgroundColorPanel.trim() === "") {
+        delete _appSettings.backgroundColorPanel;
+      }
+    }
+
     // Merge _appSettings with DEFAULT_APP_SETTINGS_SKIN to obtain final app settings
     _appSettings = Utils.deepMerge(DEFAULT_APP_SETTINGS, _appSettings);
 
@@ -138,6 +144,18 @@ export default function App() {
     if (typeof _appSettings.backgroundImg === "string" && _appSettings.backgroundImg.trim() !== "" && _appSettings.backgroundImg !== "NONE") {
       _appSettings.background = "url(" + _appSettings.backgroundImg + ") no-repeat";
       _appSettings.backgroundSize = "100% 100%";
+    }
+
+    if (typeof _appSettings.borderWidthPanel == "number") {
+      _appSettings.borderWidthPanelNumber = _appSettings.borderWidthPanel;
+    } else {
+      _appSettings.borderWidthPanelNumber = parseInt(_appSettings.borderWidthPanel);
+    }
+
+    if ((Number.isNaN(_appSettings.borderWidthPanelNumber))||(_appSettings.borderWidthPanelNumber <= 0)) {
+      _appSettings.borderStylePanel = "none";
+    } else {
+      _appSettings.borderStylePanel = "solid";
     }
 
     //Change HTTP protocol to HTTPs in URLs if necessary

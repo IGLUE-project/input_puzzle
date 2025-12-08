@@ -103,6 +103,10 @@ export default function MainScreen({ config, sendInput, result }) {
         style={{
           width: config.autoWidthBoolean ? "auto" : `${config.width}%`,
           minWidth: "375px",
+          backgroundColor: config.backgroundColorPanel,
+          borderStyle: config.borderStylePanel,
+          borderWidth: `${config.borderWidthPanelNumber}px`,
+          borderColor: config.borderColorPanel,
         }}
       >
         <p

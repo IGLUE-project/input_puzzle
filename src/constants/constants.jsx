@@ -16,6 +16,9 @@ export const DEFAULT_APP_SETTINGS = {
   yposition: "CENTER",
   opacity: "100",
   delay: "2",
+  backgroundColorPanel: "#2a2a52",
+  borderWidthPanel: "0",
+  borderColorPanel: "#ffffffff",
 };
 
 export const XPOSITION = {
