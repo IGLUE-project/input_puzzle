@@ -12,9 +12,9 @@ export let LOCALES = {
     "i.successMessage": "La solución es correcta",
   },
   sr: {
-    "i.send": "Send",
-    "i.message": "Enter the solution",
-    "i.errorMessage": "The solution is incorrect",
-    "i.successMessage": "The solution is correct",
+    "i.send": "Pošalji",
+    "i.message": "Unesite rešenje",
+    "i.errorMessage": "Rešenje je netačno",
+    "i.successMessage": "Rešenje je tačno",
   },
 };
