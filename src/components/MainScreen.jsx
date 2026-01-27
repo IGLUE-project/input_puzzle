@@ -3,7 +3,7 @@ import "./../assets/scss/MainScreen.scss";
 import { GlobalContext } from "./GlobalContext";
 import { XPOSITION, YPOSITION } from "../constants/constants";
 
-export default function MainScreen({ config, sendInput, result }) {
+export default function MainScreen({ config, sendInput, result, sendResult }) {
   const { I18n } = useContext(GlobalContext);
   const inputRef = useRef(null);
   const [xposition, setXposition] = useState("CENTER");
@@ -109,47 +109,63 @@ export default function MainScreen({ config, sendInput, result }) {
           borderColor: config.borderColorPanel,
         }}
       >
-        <p
-          className="info"
-          style={{
-            fontSize: config.fontSizeProp,
-            color: config.fontColor,
-          }}
-        >
-          {config.message}
-        </p>
-        <div className="input-container">
-          <input
-            ref={inputRef}
-            className="input"
-            name="text"
-            type="text"
-            onKeyDown={handleKeyDown}
-            style={{
-              color: config.fontColor,
-              fontSize: config.fontSizeProp,
-              width: config.autoWidthBoolean ? "auto" : `100%`,
-            }}
-            disabled={solved}
-            placeholder={solved ? "" : config.placeholder}
-          />
-          <button
-            onClick={handleSend}
-            style={{ color: config.fontColor, fontSize: config.fontSizeProp }}
-            disabled={solved}
-          >
-            {config.buttonLabel}
-          </button>
-        </div>
-        <p
-          className={`resultMessage ${resultMessageExtraClass}`}
-          style={{
-            fontSize: config.fontSizeProp,
-            color: resultMessageColor,
-          }}
-        >
-          {typeof messageToShow === "string" ? messageToShow : ""}
-        </p>
+        {!solved ?
+          <>
+            <p
+              className="info"
+              style={{
+                fontSize: config.fontSizeProp,
+                color: config.fontColor,
+              }}
+            >
+              {config.message}
+            </p>
+            <div className="input-container">
+              <input
+                ref={inputRef}
+                className="input"
+                name="text"
+                type="text"
+                onKeyDown={handleKeyDown}
+                style={{
+                  color: config.fontColor,
+                  fontSize: config.fontSizeProp,
+                  width: config.autoWidthBoolean ? "auto" : `100%`,
+                }}
+                disabled={solved}
+                placeholder={solved ? "" : config.placeholder}
+              />
+              <button
+                onClick={handleSend}
+                style={{ color: config.fontColor, fontSize: config.fontSizeProp }}
+                disabled={solved}
+              >
+                {config.buttonLabel}
+              </button>
+            </div>
+          </>
+          : <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+            <p
+              className={`resultMessage ${resultMessageExtraClass}`}
+              style={{
+                fontSize: config.fontSizeProp,
+                color: resultMessageColor,
+              }}
+            >
+              {typeof messageToShow === "string" ? messageToShow : ""}
+            </p>
+            <button
+              onClick={sendResult}
+              style={{ color: config.fontColor, fontSize: config.fontSizeProp }}
+            >
+              {I18n.getTrans("i.continue")}
+            </button>
+          </div>
+        }
       </div>
     </div>
   );

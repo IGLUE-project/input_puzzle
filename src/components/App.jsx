@@ -95,13 +95,6 @@ export default function App() {
     //Init internacionalization module
     I18n.init(_appSettings);
 
-    if (typeof _appSettings.delay === "number") {
-      _appSettings.delayNumber = _appSettings.delay;
-    } else {
-      _appSettings.delayNumber = parseFloat(_appSettings.delay);
-    }
-    _appSettings.delayNumber = 1000*_appSettings.delayNumber; //Convert delay to ms
-
     if (typeof _appSettings.opacity === "number") {
       _appSettings.opacityNumber = _appSettings.opacity;
     } else {
@@ -174,10 +167,7 @@ export default function App() {
       Utils.log("Check solution Escapp response", success, erState);
       if (success) {
         try {
-          setResult({ success: true, message: erState.msg });
-          setTimeout(() => {
-            submitPuzzleSolution(_solution);
-          }, appSettings.delayNumber);
+          setResult({ success: true, message: erState.msg, result: _solution });
         } catch (e) {
           Utils.log("Error in checkNextPuzzle", e);
         }
@@ -186,11 +176,11 @@ export default function App() {
       }
     });
   }
-  function submitPuzzleSolution(_solution) {
-    Utils.log("Submit puzzle solution", _solution);
+  function submitPuzzleSolution() {
+    Utils.log("Submit puzzle solution", result.result);
 
-    escapp.submitNextPuzzle(_solution, {}, (success, erState) => {
-      Utils.log("Solution submitted to Escapp", _solution, success, erState);
+    escapp.submitNextPuzzle(result.result, {}, (success, erState) => {
+      Utils.log("Solution submitted to Escapp", result.result, success, erState);
     });
   }
 
@@ -212,7 +202,7 @@ export default function App() {
         : {})}
     >
       <div className={`main-background ${result && result.success === true ? "solved" : ""}`}>
-        {!loading && <MainScreen config={appSettings} sendInput={checkResult} result={result} />}
+        {!loading && <MainScreen config={appSettings} sendInput={checkResult} result={result} sendResult={submitPuzzleSolution} />}
       </div>
     </div>
   );
