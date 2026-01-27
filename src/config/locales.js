@@ -18,6 +18,6 @@ export let LOCALES = {
     "i.message": "Unesite rešenje",
     "i.errorMessage": "Rešenje je netačno",
     "i.successMessage": "Rešenje je tačno",
-    "i.continue": "Continue",
+    "i.continue": "Nastavi",
   },
 };
