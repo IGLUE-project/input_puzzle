@@ -19,6 +19,7 @@ export const DEFAULT_APP_SETTINGS = {
   backgroundColorPanel: "#2a2a52",
   borderWidthPanel: "0",
   borderColorPanel: "#ffffffff",
+  borderWidthInput: "2",
 };
 
 export const XPOSITION = {

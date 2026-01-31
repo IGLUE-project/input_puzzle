@@ -120,16 +120,25 @@ export default function MainScreen({ config, sendInput, result }) {
             type="text"
             onKeyDown={handleKeyDown}
             style={{
+              width: config.autoWidthBoolean ? "auto" : `100%`,
               color: config.fontColor,
               fontSize: config.fontSizeProp,
-              width: config.autoWidthBoolean ? "auto" : `100%`,
+              borderStyle: config.borderStyleInput,
+              borderWidth: `${config.borderWidthInputNumber}px`,
+              borderColor: config.borderColorInput,
             }}
             disabled={solved}
             placeholder={solved ? "" : config.placeholder}
           />
           <button
             onClick={handleSend}
-            style={{ color: config.fontColor, fontSize: config.fontSizeProp }}
+            style={{ 
+              color: config.fontColor, 
+              fontSize: config.fontSizeProp,
+              borderStyle: config.borderStyleInput,
+              borderWidth: `${config.borderWidthInputNumber}px`,
+              borderColor: config.borderColorInput, 
+            }}
             disabled={solved}
           >
             {config.buttonLabel}

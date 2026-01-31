@@ -149,9 +149,14 @@ export default function App() {
       _appSettings.buttonLabel = I18n.getTrans("i.send");
     }
 
-    if (typeof _appSettings.backgroundImg === "string" && _appSettings.backgroundImg.trim() !== "" && _appSettings.backgroundImg !== "NONE") {
-      _appSettings.background = "url(" + _appSettings.backgroundImg + ") no-repeat";
-      _appSettings.backgroundSize = "100% 100%";
+    _appSettings.backgroundNone = false;
+    if (typeof _appSettings.backgroundImg === "string" && _appSettings.backgroundImg.trim() !== "") {
+      if(_appSettings.backgroundImg !== "NONE"){
+        _appSettings.background = "url(" + _appSettings.backgroundImg + ") no-repeat";
+        _appSettings.backgroundSize = "100% 100%";
+      } else {
+        _appSettings.backgroundNone = true;
+      }
     }
 
     if (typeof _appSettings.borderWidthPanel == "number") {
@@ -164,6 +169,22 @@ export default function App() {
       _appSettings.borderStylePanel = "none";
     } else {
       _appSettings.borderStylePanel = "solid";
+    }
+
+    if ((typeof _appSettings.borderColorInput !== "string")||(_appSettings.borderColorInput.trim()==="")) {
+      _appSettings.borderColorInput = _appSettings.borderColorPanel;
+    }
+
+    if (typeof _appSettings.borderWidthInput == "number") {
+      _appSettings.borderWidthInputNumber = _appSettings.borderWidthInput;
+    } else {
+      _appSettings.borderWidthInputNumber = parseInt(_appSettings.borderWidthInput);
+    }
+
+    if ((Number.isNaN(_appSettings.borderWidthInputNumber))||(_appSettings.borderWidthInputNumber <= 0)) {
+      _appSettings.borderStyleInput = "none";
+    } else {
+      _appSettings.borderStyleInput = "solid";
     }
 
     //Change HTTP protocol to HTTPs in URLs if necessary
@@ -205,9 +226,10 @@ export default function App() {
   return (
     <div
       id="global_wrapper"
-      className={`${
-        appSettings !== null && typeof appSettings.skin === "string" ? appSettings.skin.toLowerCase() : ""
-      }`}
+      className={`
+        ${appSettings !== null && typeof appSettings.skin === "string" ? appSettings.skin.toLowerCase() : ""}
+        ${appSettings?.backgroundNone === true ? "backgroundNone" : ""}
+      `}
       {...(appSettings !== null &&
       typeof appSettings.background === "string" &&
       typeof appSettings.backgroundSize === "string"

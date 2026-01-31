@@ -7,61 +7,46 @@ div#MainScreen {
   background-position: center;
 
   div.content {
-    background-color: #2a2a52;
     padding: 0% 2%;
     border-radius: 15px;
     transition: color 0.3s ease;
     margin: 20px;
-    p.info {
-      color: #fff;
-    }
-    // 🔹 cuando el input dentro de este contenedor está en foco,
-    // el texto del <p> se ilumina igual que el input
-    &:has(input:focus) p.info {
-      color: #fff;
-    }
   }
 
   .input-container {
     display: flex;
     gap: 15px;
-
     input {
       appearance: auto;
       background-color: transparent;
-      border: 2px solid rgb(101, 102, 131);
       border-radius: 20px;
       box-sizing: border-box;
-      color: rgb(101, 102, 131);
       caret-color: #fff;
       font-size: 18px;
       font-weight: 100;
-
       padding: 0 15px;
       text-align: center;
       outline: none;
       transition: all 0.3s ease;
+      filter: brightness(0.8);
+      transition: filter 0.15s ease;
 
       &:focus {
-        border-color: #fff;
-        color: #fff;
+        filter: brightness(1);
       }
     }
 
     button {
       background-color: transparent;
-      border: 2px solid rgb(101, 102, 131);
       border-radius: 20px;
       box-sizing: border-box;
-      color: rgb(101, 102, 131);
       font-weight: 100;
       padding: 5px 25px;
       cursor: pointer;
       transition: all 0.2s ease;
 
       &:not(:disabled):hover {
-        border-color: #fff;
-        color: #fff;
+        outline: none;
       }
 
       &:not(:disabled):active {
@@ -70,8 +55,6 @@ div#MainScreen {
 
       &:not(:disabled):focus {
         outline: none;
-        border-color: #fff;
-        color: #fff;
       }
     }
   }
