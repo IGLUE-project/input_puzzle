@@ -11,6 +11,8 @@ export let ESCAPP_APP_SETTINGS = {
   //fontSizeMin: "16",  //in px
   //fontSizeMax: "100", //in px
   //fontColor: "#ffffffff",
+  //errorMessage: "Incorrect password",
+  //successMessage: "Correct password",
   //fontColorErrorMessage: "rgb(235, 56, 56);",
   //fontColorSuccessMessage: "rgb(73, 189, 25);",
   //xposition: "RIGHT", //This value can be "LEFT", "CENTER" or "RIGHT"

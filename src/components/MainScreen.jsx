@@ -62,31 +62,25 @@ export default function MainScreen({ config, sendInput, result }) {
     }
   }, [config]);
 
+
   let solved = false;
+  let messageToShow = undefined;
   let resultMessageExtraClass = "";
   let resultMessageColor = config.fontColor;
-  let messageToShow = undefined;
-  if (result) {
-    if (typeof result.success === "boolean") {
-      if (typeof result.message === "string" && result.message.trim() !== "") {
-        messageToShow = result.message;
-      } else {
-        if (result.success === true) {
-          messageToShow = I18n.getTrans("i.successMessage");
-        } else {
-          messageToShow = I18n.getTrans("i.errorMessage");
-        }
-      }
-      if (result.success === true) {
-        solved = true;
-        resultMessageExtraClass = "successMessage";
-        resultMessageColor = config.fontColorSuccessMessage;
-      } else {
-        resultMessageExtraClass = "errorMessage";
-        resultMessageColor = config.fontColorErrorMessage;
-      }
+
+  if ((result)&&(typeof result.success === "boolean")) {
+    if (result.success === true) {
+      solved = true;
+      messageToShow = config.successMessage;
+      resultMessageExtraClass = "successMessage";
+      resultMessageColor = config.fontColorSuccessMessage;
+    } else {
+      messageToShow = config.errorMessage;
+      resultMessageExtraClass = "errorMessage";
+      resultMessageColor = config.fontColorErrorMessage;
     }
   }
+
   return (
     <div
       id="MainScreen"

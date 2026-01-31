@@ -137,6 +137,14 @@ export default function App() {
       _appSettings.message = I18n.getTrans("i.message");
     }
 
+    if ((typeof _appSettings.errorMessage !== "string")||(_appSettings.errorMessage.trim()==="")) {
+      _appSettings.errorMessage = I18n.getTrans("i.errorMessage");
+    }
+
+    if ((typeof _appSettings.successMessage !== "string")||(_appSettings.successMessage.trim()==="")) {
+      _appSettings.successMessage = I18n.getTrans("i.successMessage");
+    }
+
     if ((typeof _appSettings.buttonLabel !== "string")||(_appSettings.buttonLabel.trim()==="")) {
       _appSettings.buttonLabel = I18n.getTrans("i.send");
     }
